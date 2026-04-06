@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import asyncio
+import os
 from datetime import datetime, timedelta, timezone
 from decimal import Decimal
 
@@ -24,13 +25,13 @@ async def seed() -> None:
 
     async for session in db.session():
         # demo user
-        email = "demo@finance.local"
+        email = os.getenv("DEMO_EMAIL", "demo@example.com")
         res = await session.execute(select(User).where(User.email == email))
         user = res.scalar_one_or_none()
         if user is None:
             user = User(
                 email=email,
-                password_hash=hash_password("DemoPassword1!"),
+                password_hash=hash_password(os.getenv("DEMO_PASSWORD", "DemoPassword1!")),
                 full_name="Demo User",
                 onboarding_completed=True,
             )

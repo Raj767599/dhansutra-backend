@@ -18,26 +18,21 @@ jobs:
           cache: "pip"
 
       - name: Install
-        working-directory: backend
         run: |
           python -m pip install -U pip
           python -m pip install -e ".[dev]"
 
       - name: Lint (ruff)
-        working-directory: backend
         run: python -m ruff check .
 
       - name: Format check (black + ruff format)
-        working-directory: backend
         run: |
           python -m ruff format --check .
 
       - name: Typecheck (mypy)
-        working-directory: backend
         run: python -m mypy .
 
       - name: Tests (pytest + coverage)
-        working-directory: backend
         env:
           JWT_SECRET_KEY: ci-secret
         run: python -m pytest --cov=app --cov-report=term-missing --cov-report=xml
@@ -46,5 +41,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: coverage-xml
-          path: backend/coverage.xml
+          path: coverage.xml
 

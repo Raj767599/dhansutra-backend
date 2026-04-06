@@ -62,7 +62,7 @@ make seed
 ```
 
 Creates:
-- demo user: `demo@finance.local` / `DemoPassword1!`
+- demo user: `demo@example.com` / `DemoPassword1!` (override via `DEMO_EMAIL` / `DEMO_PASSWORD`)
 - system categories, accounts, transactions, budgets, goal + contributions
 
 ### Run tests
