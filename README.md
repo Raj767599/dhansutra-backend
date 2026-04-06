@@ -16,7 +16,7 @@ Production-grade local-first backend starter for the **DhanSutra** finance / bud
 
 ### Local setup (venv)
 
-From `backend/`:
+From repo root:
 
 ```bash
 python -m venv .venv
@@ -24,6 +24,13 @@ python -m venv .venv
 python -m pip install -U pip
 python -m pip install -e ".[dev]"
 ```
+
+#### Python version note (macOS/Linux)
+
+This project uses SQLAlchemy async ORM, which requires `greenlet`. If you are using **Python 3.14**, `greenlet` wheels may not be available yet and you can see:
+`ValueError: the greenlet library is required ... No module named 'greenlet'`.
+
+Use **Python 3.11–3.13**.
 
 Copy env:
 
