@@ -93,7 +93,9 @@ def main() -> int:
         _assert(isinstance(account_id, str) and account_id, "account id missing")
         _print_ok("create account")
 
-        page_accounts = _j(client.get("/api/v1/accounts?limit=10&offset=0", headers=_auth_headers(access)))
+        page_accounts = _j(
+            client.get("/api/v1/accounts?limit=10&offset=0", headers=_auth_headers(access))
+        )
         _assert("items" in page_accounts and "meta" in page_accounts, "accounts list not paginated")
         _print_ok("list accounts")
 
@@ -118,9 +120,14 @@ def main() -> int:
         _print_ok("create category")
 
         page_categories = _j(
-            client.get("/api/v1/categories?type=expense&limit=10&offset=0", headers=_auth_headers(access))
+            client.get(
+                "/api/v1/categories?type=expense&limit=10&offset=0", headers=_auth_headers(access)
+            )
         )
-        _assert("items" in page_categories and "meta" in page_categories, "categories list not paginated")
+        _assert(
+            "items" in page_categories and "meta" in page_categories,
+            "categories list not paginated",
+        )
         _print_ok("list categories")
 
         _print_step("Transactions: create/list/detail/summary")
@@ -147,7 +154,9 @@ def main() -> int:
         _print_ok("create transaction")
 
         page_tx = _j(
-            client.get("/api/v1/transactions?limit=10&offset=0&search=Smoke", headers=_auth_headers(access))
+            client.get(
+                "/api/v1/transactions?limit=10&offset=0&search=Smoke", headers=_auth_headers(access)
+            )
         )
         _assert("items" in page_tx and "meta" in page_tx, "transactions list not paginated")
         _print_ok("list transactions")
@@ -177,7 +186,9 @@ def main() -> int:
         _assert(isinstance(budget_id, str) and budget_id, "budget id missing")
         _print_ok("create budget")
 
-        page_budgets = _j(client.get("/api/v1/budgets?limit=10&offset=0", headers=_auth_headers(access)))
+        page_budgets = _j(
+            client.get("/api/v1/budgets?limit=10&offset=0", headers=_auth_headers(access))
+        )
         _assert("items" in page_budgets and "meta" in page_budgets, "budgets list not paginated")
         _print_ok("list budgets")
 
@@ -201,7 +212,9 @@ def main() -> int:
         _assert(isinstance(goal_id, str) and goal_id, "goal id missing")
         _print_ok("create goal")
 
-        page_goals = _j(client.get("/api/v1/goals?limit=10&offset=0", headers=_auth_headers(access)))
+        page_goals = _j(
+            client.get("/api/v1/goals?limit=10&offset=0", headers=_auth_headers(access))
+        )
         _assert("items" in page_goals and "meta" in page_goals, "goals list not paginated")
         _print_ok("list goals")
 
@@ -277,4 +290,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-
