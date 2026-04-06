@@ -2,9 +2,7 @@ name: Dependency Review
 
 on:
   pull_request:
-  push:
-    branches: [master, main, develop]
-  workflow_dispatch:
+  merge_group:
 
 permissions:
   contents: read
