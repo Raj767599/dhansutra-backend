@@ -1,0 +1,19 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: check-yaml
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.15.9
+    hooks:
+      - id: ruff
+        args: ["check", "."]
+      - id: ruff-format
+        args: ["format", "--check", "."]
+
+  # Black is configured in pyproject.toml for teams that prefer it,
+  # but CI enforces ruff format to keep changes minimal/noisy.
+
