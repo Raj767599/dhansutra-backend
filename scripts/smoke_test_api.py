@@ -67,7 +67,7 @@ def main() -> int:
             )
         )
         access = login["access_token"]
-        _assert(isinstance(access, str) and access, "missing access_token")
+        _assert(isinstance(access, str) and access != "", "missing access_token")
         _print_ok("login")
 
         me = _j(client.get("/api/v1/auth/me", headers=_auth_headers(access)))
@@ -90,7 +90,7 @@ def main() -> int:
             )
         )
         account_id = acc["id"]
-        _assert(isinstance(account_id, str) and account_id, "account id missing")
+        _assert(isinstance(account_id, str) and account_id != "", "account id missing")
         _print_ok("create account")
 
         page_accounts = _j(
@@ -116,7 +116,7 @@ def main() -> int:
             )
         )
         category_id = cat["id"]
-        _assert(isinstance(category_id, str) and category_id, "category id missing")
+        _assert(isinstance(category_id, str) and category_id != "", "category id missing")
         _print_ok("create category")
 
         page_categories = _j(
@@ -150,7 +150,7 @@ def main() -> int:
             )
         )
         transaction_id = tx["id"]
-        _assert(isinstance(transaction_id, str) and transaction_id, "transaction id missing")
+        _assert(isinstance(transaction_id, str) and transaction_id != "", "transaction id missing")
         _print_ok("create transaction")
 
         page_tx = _j(
@@ -183,7 +183,7 @@ def main() -> int:
             )
         )
         budget_id = budget["id"]
-        _assert(isinstance(budget_id, str) and budget_id, "budget id missing")
+        _assert(isinstance(budget_id, str) and budget_id != "", "budget id missing")
         _print_ok("create budget")
 
         page_budgets = _j(
@@ -209,7 +209,7 @@ def main() -> int:
             )
         )
         goal_id = goal["id"]
-        _assert(isinstance(goal_id, str) and goal_id, "goal id missing")
+        _assert(isinstance(goal_id, str) and goal_id != "", "goal id missing")
         _print_ok("create goal")
 
         page_goals = _j(
