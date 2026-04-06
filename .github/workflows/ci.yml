@@ -27,7 +27,7 @@ jobs:
       - name: Lint (ruff)
         run: python -m ruff check .
 
-      - name: Format check (black + ruff format)
+      - name: Format check (ruff format)
         run: |
           python -m ruff format --check .
 
